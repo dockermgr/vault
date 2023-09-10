@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 # shellcheck shell=bash
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-##@Version           :  202309100050-git
+##@Version           :  202309101421-git
 # @@Author           :  Jason Hempstead
 # @@Contact          :  jason@casjaysdev.pro
 # @@License          :  LICENSE.md
 # @@ReadME           :  install.sh --help
 # @@Copyright        :  Copyright: (c) 2023 Jason Hempstead, Casjays Developments
-# @@Created          :  Sunday, Sep 10, 2023 00:50 EDT
+# @@Created          :  Sunday, Sep 10, 2023 14:21 EDT
 # @@File             :  install.sh
 # @@Description      :  Container installer script for vault
 # @@Changelog        :  New script
 # @@TODO             :  Completely rewrite/refactor/variable cleanup
-# @@Other            :
-# @@Resource         :
+# @@Other            :  
+# @@Resource         :  
 # @@Terminal App     :  no
 # @@sudo/root        :  no
 # @@Template         :  installers/dockermgr
@@ -27,7 +27,7 @@
 # shellcheck disable=SC2317
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 APPNAME="vault"
-VERSION="202309100050-git"
+VERSION="202309101421-git"
 REPO_BRANCH="${GIT_REPO_BRANCH:-main}"
 HOME="${USER_HOME:-$HOME}"
 USER="${SUDO_USER:-$USER}"
@@ -315,7 +315,7 @@ CONTAINER_X11_XAUTH="/home/x11user/.Xauthority"
 HOST_DEV_MOUNT_ENABLED="no"
 HOST_SYS_MOUNT_ENABLED="no"
 HOST_PROC_MOUNT_ENABLED="no"
-HOST_MODULES_MOUNT_ENABLED="no"
+HOST_MODULES_MOUNT_ENABLED="yes"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Set container hostname and domain - Default: [vault.$SET_HOST_FULL_NAME] [$SET_HOST_FULL_DOMAIN]
 CONTAINER_HOSTNAME=""
@@ -417,7 +417,7 @@ CONTAINER_USER_PASS=""
 CONTAINER_PASS_LENGTH="24"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # If container has an admin password then set it here - [pass/random]
-CONTAINER_USER_ADMIN_PASS_HASH=""
+CONTAINER_USER_ADMIN_PASS_HASH="random"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Set container username and password env name - [CONTAINER_ENV_USER_NAME=$CONTAINER_USER_NAME]
 CONTAINER_ENV_USER_NAME=""
@@ -534,7 +534,6 @@ PUSH_INSTALLATION_KEY="5tzNCYUNwRyy37Zj7KRK"
 #SMTP_SECURITY=starttls
 #SMTP_USERNAME=<username>
 #SMTP_PASSWORD=<password>
-
 EOF
 }
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
